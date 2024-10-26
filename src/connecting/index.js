@@ -28,10 +28,43 @@ const handleApiResponse = (apiCall) => {
     });
 };
 
-export const login = (credentials) => handleApiResponse(
-    apiClient.post(`${baseURL}/users/login`, {email : credentials.email , password : credentials.password} , {withCredentials:true})
+export const userLogin = (credentials) => handleApiResponse(
+    apiClient.post(`${baseURL}/user/login`, {...credentials} , {withCredentials:true})
+);
+
+export const userRegister = (credentials) => handleApiResponse(
+    apiClient.post(`${baseURL}/user/register`, {...credentials} , {withCredentials:true})
+);
+
+export const userMessage = (credentials) => handleApiResponse(
+    apiClient.post(`${baseURL}/user/message`, {...credentials} , {withCredentials:true})
+);
+
+export const userOutpassValidator = (credentials) => handleApiResponse(
+    apiClient.post(`${baseURL}/user/outpass`, {...credentials} , {withCredentials:true})
 );
 
 export const logout = () => handleApiResponse(
-    apiClient.post(`${baseURL}/users/logout` , {} , {withCredentials : true})
+    apiClient.post(`${baseURL}/user/logout` , {} , {withCredentials : true})
 );
+
+export const getUser = () => handleApiResponse(
+    apiClient.post(`${baseURL}/get-user` , {} , {withCredentials : true})
+);
+
+export const prevOutpass = () => handleApiResponse(
+    apiClient.post(`${baseURL}/prev-outpass` , {} , {withCredentials : true})
+);
+
+export const adminDetails = () => handleApiResponse(
+    apiClient.post(`${baseURL}/admin/details` , {} , {withCredentials : true})
+);
+
+export const adminLogin = () => handleApiResponse(
+    apiClient.post(`${baseURL}/admin/login` , {} , {withCredentials : true})
+);
+
+export const adminRouter = () => handleApiResponse(
+    apiClient.post(`${baseURL}/admin/approval` , {} , {withCredentials : true})
+);
+

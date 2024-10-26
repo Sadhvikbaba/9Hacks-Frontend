@@ -1,12 +1,19 @@
 import React from 'react'
 import  {useForm} from "react-hook-form"
 import { Link } from 'react-router-dom'
+import {userRegister} from "../connecting/index"
+import {login as authLogin} from '../store/authSlice';
+import { useDispatch } from 'react-redux';
 
 function SignUp() {
+  const Dispatch = useDispatch();
+
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const signupFunc =async (data) =>{
     console.log(data);
+    await userRegister(data)
+    
     
   }
   return (

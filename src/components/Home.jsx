@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaSchool, FaUserGraduate, FaIdBadge, FaUser, FaLock, FaVenusMars, FaPhone, FaBook, FaCalendarAlt } from 'react-icons/fa';
+import { getUser } from '../connecting';
 
 function UserDashboard() {
+
+  useEffect(()=> {
+    const load = async () => {
+      await getUser()
+      .then((res) => {
+        console.log(res);
+        
+      })
+    }
+    load()
+  } ,[])
   
   const userData = {
     school: 'SRM University',

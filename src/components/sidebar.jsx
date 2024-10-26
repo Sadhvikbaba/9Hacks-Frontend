@@ -3,8 +3,12 @@ import { CiMenuBurger , CiLogout} from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 import { FaWpforms , FaHistory , FaHome } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../connecting';
+import {logout as authLogout} from "../store/authSlice";
+import { useDispatch } from 'react-redux';
 
 function Sidebar() {
+  const Dispatch = useDispatch()
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const Navigate = useNavigate();
@@ -12,6 +16,12 @@ function Sidebar() {
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+
+  const logout22 = async () => {
+    await logout().then((res) => {console.log(res);
+      Dispatch(authLogout())
+    })
+  }
 
   return (
     <>

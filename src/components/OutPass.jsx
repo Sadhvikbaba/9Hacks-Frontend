@@ -1,11 +1,18 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { userMessage } from '../connecting';
 
 function OutPass() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);  
+  const onSubmit = async (data) => {
+    console.log(data);
+    await userMessage(data)
+    .then((res) =>{
+      console.log(res);
+    }) 
+    .catch((res) => console.log(res)
+    )
   };
 
   return (
